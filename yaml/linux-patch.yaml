@@ -1,0 +1,14 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: linux-rancher-patch
+spec:
+  template:
+    spec:
+      tolerations:
+      - key: "cattle.io/os"
+        operator: "Equal"
+        value: "linux"
+        effect: "NoSchedule"
+      nodeSelector:
+        kubernetes.io/os : linux
